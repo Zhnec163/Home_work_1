@@ -11,6 +11,18 @@ public class Kotik {
 
     public static int numberCats;
 
+    public Kotik(int prettiness, String name, int weight, String meow){
+        numberCats++;
+        this.prettiness = prettiness;
+        this.name = name;
+        this.weight = weight;
+        this.meow = meow;
+    }
+    public Kotik(){
+        numberCats++;
+        setKotik(7,"Евро", 9, "meow");
+    }
+
     public boolean sleep(){
         if(satiety > 0){
             System.out.println("Котэ лег спать");
@@ -64,9 +76,9 @@ public class Kotik {
     public void eat(int satiety){
         this.satiety += satiety;
     }
-    public void eat(int satiety, String lastMeal){
+    public void eat(int satiety, String foodName){
         this.satiety += satiety;
-        this.lastMeal = lastMeal;
+        this.lastMeal = foodName;
     }
     public void eat(){
         eat(10, "Cats Food");
@@ -74,6 +86,7 @@ public class Kotik {
     public void liveAnotherDay(){
         for (int i = 0; i < 24; i++){
             int rnd = 1 + (int)(Math.random() * 5);
+            System.out.print((i + 1) + " ");
             switch (rnd){
                 case 1:
                     if(!sleep()) eat(10, "Cats Food");
@@ -121,17 +134,4 @@ public class Kotik {
     public String getKoticInfo(){
         return "\nИмя: " + getName() + "\nВес: " + getWeight();
     }
-
-    public Kotik(int prettiness, String name, int weight, String meow){
-        numberCats++;
-        this.prettiness = prettiness;
-        this.name = name;
-        this.weight = weight;
-        this.meow = meow;
-    }
-    public Kotik(){
-        numberCats++;
-        setKotik(7,"Евро", 9, "meow");
-    }
-
 }
